@@ -108,6 +108,7 @@ Example:
 
     SOURCE_PATHS            Paths to the source files, defaults to component's base directory
     EXCLUDE_SOURCE_FILES    Source files to be excluded from compilation
+    EXTRA_SOURCE_FILES      Additional source files to be included
     INCLUDE_PATHS           Paths to be added via -I compiler flags, defaults to component's base directory and $(COMPONENT_ROOT_PATHS)
     SYMBOLS                 Symbols to be added via -D compiler flags
 

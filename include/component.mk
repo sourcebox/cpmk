@@ -25,7 +25,11 @@ SOURCE_FILES := $(foreach dir,$(SOURCE_PATHS),$(wildcard $(dir)/*.c))
 SOURCE_FILES += $(foreach dir,$(SOURCE_PATHS),$(wildcard $(dir)/*.cpp))
 SOURCE_FILES += $(foreach dir,$(SOURCE_PATHS),$(wildcard $(dir)/*.cc))
 SOURCE_FILES += $(foreach dir,$(SOURCE_PATHS),$(wildcard $(dir)/*.s))
+
 SOURCE_FILES := $(filter-out $(EXCLUDE_SOURCE_FILES), $(SOURCE_FILES))
+
+SOURCE_FILES += $(EXTRA_SOURCE_FILES)
+SOURCE_PATHS += $(foreach file,$(EXTRA_SOURCE_FILES),$(dir $(file)))
 
 INCLUDE_FLAGS := $(addprefix -I, $(INCLUDE_PATHS))
 
