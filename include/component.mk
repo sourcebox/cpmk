@@ -38,6 +38,10 @@ SYMBOL_FLAGS := $(addprefix -D, $(SYMBOLS))
 OBJECTS := $(foreach file,$(SOURCE_FILES),$(BUILD_PATH)/$(basename $(notdir $(file))).o)
 
 
+###############################################################################
+# Objects build
+###############################################################################
+
 build: $(OBJECTS)
 
 
@@ -69,4 +73,25 @@ endef
 
 $(foreach srcdir, $(SOURCE_PATHS),$(eval $(call SourceDirRules,$(srcdir))))
 
+
 -include $(OBJECTS:.o=.d)
+
+
+###############################################################################
+# Optional library build
+###############################################################################
+
+ifeq ($(BUILD_LIBRARIES), 1)
+
+LIBRARY_NAME = lib$(notdir $(BASE_PATH)).a
+
+ARFLAGS ?= cru
+
+$(BUILD_PATH)/$(LIBRARY_NAME): $(OBJECTS)
+	@echo "(AR) $(ARFLAGS)" $@
+	$(RM) $@
+	$(AR) $(ARFLAGS) $@ $^
+
+build: $(BUILD_PATH)/$(LIBRARY_NAME)
+
+endif
