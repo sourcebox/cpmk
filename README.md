@@ -99,10 +99,11 @@ Example:
 
 ## Components Setup
 
-    COMPONENTS              List of components to build, default is empty for all components
-    EXCLUDE_COMPONENTS      List of components to exclude
-    MAIN_COMPONENT_PATH     Path to main component, defaults to ./main
-    COMPONENT_ROOT_PATHS    List of component search paths, defaults to ./components
+    COMPONENTS                  List of components to build, default is empty for all components
+    EXCLUDE_COMPONENTS          List of components to exclude from build
+    EXCLUDE_COMPONENTS_CLEAN    List of components to exclude from clean
+    MAIN_COMPONENT_PATH         Path to main component, defaults to ./main
+    COMPONENT_ROOT_PATHS        List of component search paths, defaults to ./components
 
 
 ## Paths and Symbols

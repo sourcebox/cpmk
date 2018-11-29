@@ -63,6 +63,8 @@ endif
 
 COMPONENTS := $(filter-out $(EXCLUDE_COMPONENTS), $(COMPONENTS))
 
+COMPONENTS_CLEAN := $(filter-out $(EXCLUDE_COMPONENTS_CLEAN), $(COMPONENTS))
+
 COMPONENT_PATHS := $(foreach comp,$(filter-out main, $(COMPONENTS)),\
 	$(firstword $(foreach cd,\
 	$(COMPONENT_ROOT_PATHS), $(wildcard $(dir $(cd))$(comp) $(cd)/$(comp)))))
@@ -124,7 +126,7 @@ endif
 
 all: $(APP_ALL)
 
-clean: $(addprefix component-,$(addsuffix -clean,$(notdir $(COMPONENT_PATHS))))
+clean: $(addprefix component-,$(addsuffix -clean,$(COMPONENTS_CLEAN)))
 	@echo "(RM)" $(CLEAN_FILES)
 	$(RM) $(CLEAN_FILES)
 
