@@ -94,6 +94,7 @@ Example:
     APPLICATION_TYPE    Set to EMBEDDED for building .elf, .bin and .hex files
     BUILD_ROOT_PATH     Output directory, defaults to ./build
     V or VERBOSE        Enable verbosity, defaults to 0
+    BUILD_LIBRARIES     Enable libraries build, defaults to 0
 
 
 ## Components Setup
