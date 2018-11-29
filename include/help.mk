@@ -2,6 +2,7 @@ help:
 	@echo "General targets:"
 	@echo "    all                      Build all"
 	@echo "    clean                    Remove build output"
+	@echo "    clean-all                Clean build directory completely"
 	@echo "    components               Build all components (no linking)"
 	@echo "    component-<name>         Build component <name> only"
 	@echo "    component-<name>-clean   Clean component <name> only"

@@ -130,6 +130,10 @@ clean: $(addprefix component-,$(addsuffix -clean,$(COMPONENTS_CLEAN)))
 	@echo "(RM)" $(CLEAN_FILES)
 	$(RM) $(CLEAN_FILES)
 
+clean-all:
+	@echo "rm -rf $(BUILD_ROOT_PATH)/*"
+	rm -rf $(BUILD_ROOT_PATH)/*
+
 builddir:
 	@mkdir -p $(BUILD_ROOT_PATH)
 
