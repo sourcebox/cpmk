@@ -26,6 +26,7 @@ HERE := $(SELF_PATH)
 BUILD_ROOT_PATH ?= ./build
 
 ifdef TOOLCHAIN_PATH
+SHELL = /bin/bash
 PATH := $(TOOLCHAIN_PATH)/bin:$(PATH)
 endif
 
