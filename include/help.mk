@@ -14,3 +14,7 @@ help:
 	@echo "Desktop targets:"
 	@echo "    run                      Run application"
 	@echo "    debug                    Run application in debugger"
+	@echo
+	@echo "Embedded targets:"
+	@echo "    debug                    Start debugger with application"
+

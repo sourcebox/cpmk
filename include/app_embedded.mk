@@ -45,3 +45,6 @@ size: $(APP_ELF)
 size-details: $(APP_ELF)
 	$(NM) --size-sort --print-size --reverse-sort --radix=d --demangle \
 		$(APP_ELF)
+
+debug: $(APP_ELF)
+	@$(GDB) $(APP_ELF)
