@@ -86,6 +86,7 @@ endif
 
 COMPONENT_PROJECT_MAKEFILES := $(foreach path,$(COMPONENT_PATHS),$(path)/project.mk)
 BASE_PATH = ./$(SELF_PATH)
+BASE_NAME = $(notdir $(BASE_PATH:%/=%))
 -include $(COMPONENT_PROJECT_MAKEFILES)
 
 INCLUDE_PATHS += $(COMPONENT_ROOT_PATHS) $(MAIN_COMPONENT_PATH)
@@ -101,6 +102,7 @@ component-$(1):
 	mkdir -p $(BUILD_ROOT_PATH)/$(1)
 	@echo "(MAKE)" $(2)
 	+$(MAKE) -f $(HERE)/include/component.mk \
+	BASE_NAME=$(1) \
 	BASE_PATH=$(2) \
 	BUILD_PATH=$(BUILD_ROOT_PATH)/$(1)
 

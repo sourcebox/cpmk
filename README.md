@@ -116,6 +116,8 @@ Example:
 
 Paths for sources and includes are relative to the project directory. To construct paths relative to a component, use the variable *$(BASE_PATH)* which is set to the components directory before including the *.component.mk* or *project.mk* makefiles respectively.
 
+Use the variable *$(BASE_NAME)* in a similar way to get the name of the component.
+
 
 ## Link Order
 
