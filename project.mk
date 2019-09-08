@@ -21,6 +21,7 @@ HERE := $(SELF_PATH)
 # Configuration
 ###############################################################################
 
+.ONESHELL:
 .DEFAULT_GOAL = all
 
 BUILD_ROOT_PATH ?= ./build
@@ -77,7 +78,7 @@ endif
 OBJECTS = $(foreach component,$(COMPONENTS),$(wildcard $(BUILD_ROOT_PATH)/$(component)/*.o))
 
 ifndef INCLUDE_PATHS
-INCLUDE_PATHS := 
+INCLUDE_PATHS :=
 else
 INCLUDE_PATHS := $(INCLUDE_PATHS)
 endif
