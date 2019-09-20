@@ -100,7 +100,7 @@ define ComponentRules
 .PHONY: component-$(1)
 
 component-$(1):
-	mkdir -p $(BUILD_ROOT_PATH)/$(1)
+	+mkdir -p $(BUILD_ROOT_PATH)/$(1)
 	@echo "(MAKE)" $(2)
 	+$(MAKE) -f $(HERE)/include/component.mk \
 	BASE_NAME=$(1) \
