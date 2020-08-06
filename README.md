@@ -31,6 +31,7 @@ Main features:
 - Use *V=1* or *VERBOSE=1* optionally to get verbose build messages
 - Run *make help* for additional info on targets
 - Run *make info* to show the build configuration
+- Run *make debug* to build and load the binary into the debugger
 
 **Warning**: Don't use any spaces in path or file names *within* your project! Make will process them as delimiters causing errors. However, having spaces in the path *to* your project is working.
 
@@ -111,7 +112,8 @@ Example:
     SOURCE_PATHS            Paths to the source files, defaults to component's base directory
     EXCLUDE_SOURCE_FILES    Source files to be excluded from compilation
     EXTRA_SOURCE_FILES      Additional source files to be included
-    INCLUDE_PATHS           Paths to be added via -I compiler flags, defaults to component's base directory and $(COMPONENT_ROOT_PATHS)
+    INCLUDE_PATHS           Paths to be added via -I compiler flags,
+                            defaults to component's base directory and $(COMPONENT_ROOT_PATHS)
     SYMBOLS                 Symbols to be added via -D compiler flags
 
 Paths for sources and includes are relative to the project directory. To construct paths relative to a component, use the variable *$(BASE_PATH)* which is set to the components directory before including the *.component.mk* or *project.mk* makefiles respectively.
@@ -133,6 +135,12 @@ The full relative path to the .o file in the build output directory has to be pr
 Some versions of the GNU Arm Embedded Toolchain have a flaw in the linker that leads to have weak symbols removed by mistake, especially when using link time optimization (LTO). This bug mainly affects startup code containing the ISR vector table.
 
 A known workaround is to put any of these files at the start of the object file list when linking. The LD_FIRST_OBJECTS setting allows to achieve this.
+
+
+## Debugging
+
+    GDB_ARGS        Arguments passed to the $(GDB) command on *make debug*,
+                    defaults to $(APP_EXE) for desktop builds and $(APP_ELF) for embedded builds
 
 
 # Example

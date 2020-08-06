@@ -10,6 +10,8 @@ APP_ALL := $(APP_ELF) $(APP_BIN) $(APP_HEX) $(APP_LST)
 
 CLEAN_FILES := $(APP_ALL) $(APP_MAP)
 
+GDB_ARGS ?= $(APP_ELF)
+
 .PHONY: $(APP_ELF)
 
 all: size
@@ -47,4 +49,4 @@ size-details: $(APP_ELF)
 		$(APP_ELF)
 
 debug: $(APP_ELF)
-	@$(GDB) $(APP_ELF)
+	@$(GDB) $(GDB_ARGS)

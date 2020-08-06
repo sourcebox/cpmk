@@ -13,6 +13,8 @@ APP_ALL := $(APP_EXE) $(APP_LST)
 
 CLEAN_FILES := $(APP_ALL) $(APP_MAP)
 
+GDB_ARGS ?= $(APP_EXE)
+
 .PHONY: $(APP_EXE)
 
 all: size
@@ -45,4 +47,4 @@ run: $(APP_EXE)
 	@$(APP_EXE)
 
 debug: $(APP_EXE)
-	@$(GDB) $(APP_EXE)
+	@$(GDB) $(GDB_ARGS)
