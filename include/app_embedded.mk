@@ -10,7 +10,10 @@ APP_ALL := $(APP_ELF) $(APP_BIN) $(APP_HEX) $(APP_LST)
 
 CLEAN_FILES := $(APP_ALL) $(APP_MAP)
 
+OBJCOPY_FLAGS = $(addprefix -R , $(OBJCOPY_REMOVE_SECTIONS))
+
 GDB_ARGS ?= $(APP_ELF)
+
 
 .PHONY: $(APP_ELF)
 
@@ -29,11 +32,11 @@ link: builddir components
 
 $(APP_BIN): $(APP_ELF)
 	@echo "(OBJCOPY)" $@
-	$(OBJCOPY) -O binary $(APP_ELF) $(APP_BIN)
+	$(OBJCOPY) -O binary $(OBJCOPY_FLAGS) $(APP_ELF) $(APP_BIN)
 
 $(APP_HEX): $(APP_ELF)
 	@echo "(OBJCOPY)" $@
-	$(OBJCOPY) -O ihex $(APP_ELF) $(APP_HEX)
+	$(OBJCOPY) -O ihex $(OBJCOPY_FLAGS) $(APP_ELF) $(APP_HEX)
 
 $(APP_LST): $(APP_ELF)
 	@echo "(OBJDUMP)" $@

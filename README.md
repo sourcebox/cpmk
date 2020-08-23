@@ -47,7 +47,7 @@ A component is a directory with a *component.mk* file that is included when the 
 
 Optionally, a component can have a *project.mk* file that is included at the beginning of the project build. This file can be used for global settings belonging to all components or the whole build process itself.
 
-By default, components must be either the main component under *./main* or reside in a directory named *./components* under the project root. 
+By default, components must be either the main component under *./main* or reside in a directory named *./components* under the project root.
 
 **Warning**: Component directories are not scanned recursively. Also, all components must have unique names.
 
@@ -91,12 +91,12 @@ Example:
 
 ## Build Output
 
-    PROJECT_NAME        Used for output filenames, must be defined
-    APPLICATION_TYPE    Set to EMBEDDED for building .elf, .bin and .hex files
-    BUILD_ROOT_PATH     Output directory, defaults to ./build
-    V or VERBOSE        Enable verbosity, defaults to 0
-    BUILD_LIBRARIES     Enable libraries build, defaults to 0
-
+    PROJECT_NAME                Used for output filenames, must be defined
+    APPLICATION_TYPE            Set to EMBEDDED for building .elf, .bin and .hex files
+    BUILD_ROOT_PATH             Output directory, defaults to ./build
+    V or VERBOSE                Enable verbosity, defaults to 0
+    BUILD_LIBRARIES             Enable libraries build, defaults to 0
+    OBJCOPY_REMOVE_SECTIONS     List of sections to be removed from .bin and .hex files
 
 ## Components Setup
 
