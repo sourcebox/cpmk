@@ -67,13 +67,13 @@ $(BUILD_PATH)/%.o: $(1)/%.cc
 
 $(BUILD_PATH)/%.o: $(1)/%.s
 	@echo "(AS)" $$<
-	$(AS) $(ASFLAGS) -c \
+	$(AS) $(ASFLAGS) $(INCLUDE_FLAGS) $(SYMBOL_FLAGS) -c \
 	-o $$@ $$< \
 	-Wp,-MMD,$(BUILD_PATH)/$$*.d,-MT"$$@"
 
 $(BUILD_PATH)/%.o: $(1)/%.S
 	@echo "(AS)" $$<
-	$(AS) $(ASFLAGS) -c \
+	$(AS) $(ASFLAGS) $(INCLUDE_FLAGS) $(SYMBOL_FLAGS) -c \
 	-o $$@ $$< \
 	-Wp,-MMD,$(BUILD_PATH)/$$*.d,-MT"$$@"
 endef
