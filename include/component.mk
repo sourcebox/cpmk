@@ -25,6 +25,7 @@ SOURCE_FILES := $(foreach dir,$(SOURCE_PATHS),$(wildcard $(dir)/*.c))
 SOURCE_FILES += $(foreach dir,$(SOURCE_PATHS),$(wildcard $(dir)/*.cpp))
 SOURCE_FILES += $(foreach dir,$(SOURCE_PATHS),$(wildcard $(dir)/*.cc))
 SOURCE_FILES += $(foreach dir,$(SOURCE_PATHS),$(wildcard $(dir)/*.s))
+SOURCE_FILES += $(foreach dir,$(SOURCE_PATHS),$(wildcard $(dir)/*.S))
 
 SOURCE_FILES := $(filter-out $(EXCLUDE_SOURCE_FILES), $(SOURCE_FILES))
 
@@ -65,6 +66,12 @@ $(BUILD_PATH)/%.o: $(1)/%.cc
 	-Wp,-MMD,$(BUILD_PATH)/$$*.d,-MT"$$@"
 
 $(BUILD_PATH)/%.o: $(1)/%.s
+	@echo "(AS)" $$<
+	$(AS) $(ASFLAGS) -c \
+	-o $$@ $$< \
+	-Wp,-MMD,$(BUILD_PATH)/$$*.d,-MT"$$@"
+
+$(BUILD_PATH)/%.o: $(1)/%.S
 	@echo "(AS)" $$<
 	$(AS) $(ASFLAGS) -c \
 	-o $$@ $$< \
